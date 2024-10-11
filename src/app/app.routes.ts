@@ -14,6 +14,7 @@ export const routes: Routes = [
 
   {
     path: '', component: MainComponent, canActivate: [appGuard], children: [
+      {path: 'main', component: MainComponent},
       {path: 'aula', component: AulaComponent},
       {path: 'aluno', component: AlunoComponent},
     ]

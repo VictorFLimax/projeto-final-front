@@ -5,6 +5,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import {MatOption} from '@angular/material/core';
+import {MatSelect, MatSelectModule} from '@angular/material/select';
 
 @Component({
   selector: 'app-cadastro',
@@ -15,7 +17,9 @@ import { MatCardModule } from '@angular/material/card';
     MatButtonModule,
     MatCardModule,
     RouterLink,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatOption,
+    MatSelectModule
   ],
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.css'],

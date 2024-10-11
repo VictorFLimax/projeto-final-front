@@ -1,4 +1,56 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+
 .container {
   display: flex;
   flex-direction: column;
+  height: 100vh;
+}
+
+mat-drawer-container {
+  height: 100%;
+
+
+  mat-drawer {
+    display: flex;
+    background-color: black;
+    color: white;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      padding: 0.5rem;
+      gap: 20px;
+      list-style-type: none;
+      font-size: 20px;
+
+      li {
+        height: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      li:hover {
+        background-color: lightgray;
+        padding: 0;
+      }
+
+    }
+
+  }
+
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  background-color: lightgray;
+  height: 100vh;
+  width: 100%;
+  padding: 1rem;
 }

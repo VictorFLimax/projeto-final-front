@@ -4,14 +4,14 @@
       <h2>Cadastro</h2>
       <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="formulario_cadastro">
 
-        <mat-form-field>
-          <mat-label>Usuário</mat-label>
-          <input matInput formControlName="usuario" required />
-        </mat-form-field>
 
         <mat-form-field>
-          <mat-label>CPF</mat-label>
-          <input matInput formControlName="cpf" required />
+          <mat-label>Tipo de Usuário</mat-label>
+          <mat-select>
+            <mat-option value="" disabled selected>Selecione</mat-option>
+            <mat-option value="professor">Professor</mat-option>
+            <mat-option value="aluno">Aluno</mat-option>
+          </mat-select>
         </mat-form-field>
 
         <mat-form-field>

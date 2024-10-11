@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {MatFormField, MatFormFieldModule} from '@angular/material/form-field';
-import {MatInput, MatInputModule} from '@angular/material/input';
-import {MatButton, MatButtonModule} from '@angular/material/button';
-import {MatCard, MatCardModule} from '@angular/material/card';
-import {Router, RouterLink} from '@angular/router';
-import {FormControl, FormControlName, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { Router, RouterLink } from '@angular/router';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -15,35 +16,36 @@ import {FormControl, FormControlName, FormGroup, ReactiveFormsModule, Validators
     MatButtonModule,
     MatCardModule,
     RouterLink,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgIf
   ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
   userForm: FormGroup;
-  userData: any = {}
+  userData: any = {};
+
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.userForm = new FormGroup({
-      name: new FormControl('',[Validators.required]),
-      senha : new FormControl('',[Validators.required,])
-  });
 
+      email: new FormControl('', [Validators.required, Validators.email]),
+      senha: new FormControl('', [Validators.required])
+    });
   }
-  onSubmit(){
-    if(this.userForm.valid){
+
+  onSubmit(): void {
+    if (this.userForm.valid) {
       const formValues = this.userForm.getRawValue();
       Object.assign(this.userData, formValues);
       console.log('User Data:', this.userData);
     }
   }
-  constructor(private router: Router) {
-  }
 
-  login() {
+  login(): void {
     localStorage.setItem('token', '123456');
     this.router.navigate(['']).then();
   }
-
 }

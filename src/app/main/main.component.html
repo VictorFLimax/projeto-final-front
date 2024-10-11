@@ -1,19 +1,42 @@
-<div>
+<div class="container">
+  <mat-toolbar>
+    <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Sala Virtual</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button (click)="toggleFormulario()">
+      <mat-icon>add</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon-button>
+    </button>
+  </mat-toolbar>
 
-  <nav>
-    <ul>
-<!--      <li routerLink="aula"></li>-->
-<!--      <li routerLink="cadastro"></li>-->
-    </ul>
-  </nav>
+  <mat-drawer-container autosize>
+    <mat-drawer #drawer mode="side">
+      <div *ngIf="exibirFormulario">
+        <form (ngSubmit)="criarSala()" #salaForm="ngForm">
+          <mat-form-field>
+            <mat-label>Nome da Sala</mat-label>
+            <input matInput [(ngModel)]="novoNomeSala" name="nome" required>
+          </mat-form-field>
+          <button mat-raised-button type="submit">Criar Sala</button>
+        </form>
+      </div>
+    </mat-drawer>
 
-  <div class="container">
-    <router-outlet/>
-  </div>
-
-  <footer>
-    <span></span>
-  </footer>
-
+    <section>
+      <ng-container *ngFor="let sala of salas">
+        <mat-card style="width: 300px; height: 300px">
+          <mat-card-title>{{ sala.nome }}</mat-card-title>
+          Hello
+          <mat-card-actions>
+            <button mat-flat-button (click)="entrarNaSala(sala)">Entrar</button>
+          </mat-card-actions>
+        </mat-card>
+      </ng-container>
+    </section>
+  </mat-drawer-container>
 </div>
 
